@@ -1,0 +1,21 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+logger:
+      default: info
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+rest_command:
+  brewfather_post:
+    url: http://log.brewfather.net/stream?id=xxxxxxxx
+    method: POST
+    headers:
+      accept: 'application/json, text/html'
+    payload: '{"name": "InkBird", "temp": {{temp}}, "aux_temp": {{set_temp}}, "temp_unit": "F","comment": "Hello Assistance"}'
+    content_type:  'application/json; charset=utf-8'
