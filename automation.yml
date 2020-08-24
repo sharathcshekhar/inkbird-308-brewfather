@@ -1,0 +1,15 @@
+- id: 'my_unique_id'  # <-- Required for editor to work, for automations created with the editor the id will be automatically generated.
+  alias: Post InkBird to BrewFather
+  description: ''
+  trigger:
+  - minutes: /15
+    platform: time_pattern
+  condition: []
+  action:
+  - data_template:
+      set_temp: '{{ ((state_attr(''device_id'', ''temperature'')
+        | float) - 32) / 18}}  '
+      temp: '{{ ((state_attr(''device_id'', ''current_temperature'')
+        | float) + 288) / 10}}'
+    service: rest_command.brewfather_post
+  mode: single
