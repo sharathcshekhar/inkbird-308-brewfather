@@ -25,7 +25,7 @@ After this, you can read the values from Inkbird on Tuya. Next, create a cloud a
 Next, you have to run home-assistant server. If you have a always-on laptop or a desktop, you can get a docker image
 and start it: https://www.home-assistant.io/docs/installation/docker/. The other options are using a Raspberry Pi, or a AWS instance to run home-assistant.
 To start a docker instance:
-    docker run -d --name="home-assistant" -v ~/home-assistant/config:/config -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/home-assistant:stable
+    docker run -d --name="home-assistant" -v ~/home-assistant/config:/config -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/home-assistant:stable
 
 To verify, point your browser to `http://localhost:8123/`. This should load the home-assistant console.
 
@@ -33,8 +33,7 @@ To verify, point your browser to `http://localhost:8123/`. This should load the 
 1. Navigate to `http://localhost:8123/config/integrations`, and link your Tuya account by entering your credentials.
 2. You should now be able to see some data from Inkbird in your home-assistant console.
 
-The data home-assistant receives from InkBird has many other information (such as delay, calibration, etc.). You can get all the attributes here:
-    http://localhost:8123/developer-tools/state
+The data home-assistant receives from InkBird has many other information (such as delay, calibration, etc.). You can get all the attributes here: `http://localhost:8123/developer-tools/state`
 
 To monitor the fermentation/keezer temperature, you need only two of these values. `temperature` which is the set-temperature and `current_temperature` 
 which is the current temperature.
@@ -43,9 +42,9 @@ However, for some reason the data home-assistant receives from Tuya looks like i
 This is probably due to some strange way of converting Fahrenheit/Celsius (e.g., double conversion at some point).
 
 To get back the original temperatures, this is what I found works for me when InkBird is configured to output values in F.
-
-    actual_set_temp in F = (temp_in_home_assistat - 32) / 18
-    actual_current_temp in F = (temp_in_home_assistat + 288) / 10
+    
+      actual_set_temp in F = (temp_in_home_assistat - 32) / 18
+      actual_current_temp in F = (temp_in_home_assistat + 288) / 10
 
 # Pushing data to Brefather
 1. To push the data from home-assistant to Brewfather, create a REST service. See `configuration.yaml`.
