@@ -25,7 +25,8 @@ After this, you can read the values from Inkbird on Tuya. Next, create a cloud a
 Next, you have to run home-assistant server. If you have a always-on laptop or a desktop, you can get a docker image
 and start it: https://www.home-assistant.io/docs/installation/docker/. The other options are using a Raspberry Pi, or a AWS instance to run home-assistant.
 To start a docker instance:
-    docker run -d --name="home-assistant" -v ~/home-assistant/config:/config -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/home-assistant:stable
+        
+        docker run -d --name="home-assistant" -v ~/home-assistant/config:/config -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/home-assistant:stable
 
 To verify, point your browser to `http://localhost:8123/`. This should load the home-assistant console.
 
