@@ -47,7 +47,7 @@ To get back the original temperatures, this is what I found works for me when In
       actual_set_temp in F = (temp_in_home_assistat - 32) / 18
       actual_current_temp in F = (temp_in_home_assistat + 288) / 10
 
-# Pushing data to Brefather
+# Pushing data to Brewfather
 1. To push the data from home-assistant to Brewfather, create a REST service. See `configuration.yaml`.
 2. Place this file in the `config` directory of home-assistant.
 3. Turn on the custom streams on Brewfather - the app will generate a custom URL.
